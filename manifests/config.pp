@@ -1,4 +1,4 @@
-class snmp::snmp_config (
+class snmp::config (
     $config                = $snmp::config
     $mibs_dirs             = $snmp::mibs_dirs,
     $mibs_files            = $snmp::mibs_files,
