@@ -2,7 +2,7 @@
 #
 # Manages the snmp daemon
 
-class snmp::service inherits snmp {
+class snmp::service {
 
     service{$::snmp::service_name:
         ensure => running,
