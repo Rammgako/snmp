@@ -1,9 +1,8 @@
 class snmp (
     String $package_name                     = 'net-snmp',
     String $trapsink                         = $snmp::config::trapsink, #for snnmpd.conf
-    Array[String] $sec_names                         = $snmp::config::sec_names, #for snnmpd.conf
-    String $source                           = $snmp::config::source,  #for snnmpd.conf
-    String $community                        = $snmp::config::comunity, #for snnmpd.conf
+    Optional[Hash] $com2secs                 = $snmp::config::com2secs,
+    Optional[Hash] $vacm_group                    = $snmp::config::vacm_group
     String $sec_group                        = $snmp::config::sec_group, #for snnmpd.conf
     String $sec_model                        = $snmp::config::sec_model,#for snnmpd.conf
     Array[String] $snmpagent                 = $snmp::config::snmpagent, #listening address and port
@@ -19,15 +18,7 @@ class snmp (
     Optional[Hash]    $extra_config_sections = {},
 )   {
 
-        file {'/etc/snmp/snmp.conf':
-            ensure => file,
-            content => template('snmp/snmp.header.conf.erb'),
-        }
 
-        file { '/etc/snmp/snmpd.conf':
-            ensure  => file,
-            content => template('snmp/snmpd.header.conf.erb'),
-        }
 
    }
 
