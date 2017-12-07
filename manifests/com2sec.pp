@@ -1,4 +1,4 @@
-define snmp::com2sec (
+define snmp::com2secs (
 
     String $sec_name  = $title,
     Array $source     = [],
@@ -6,7 +6,7 @@ define snmp::com2sec (
 
 ) {
     concat::fragment{"snmp_com2sec_{$sec_name}":
-        target => $::snmp::config,
-        content => template('snmp/snmpd.header.conf.erb'),
+        target  => $::snmp::config,
+        content => template('snmp/snmpd.conf.erb'),
     }
 }

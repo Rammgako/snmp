@@ -7,6 +7,6 @@ define snmp::vacm_group (
 ) {
     concat::fragment{"snmp_vacm_group_{$group_name}":
         target  => $::snmp::config,
-        content => template('snmp/snmpd.header.conf.erb'),
+        content => template('snmp/snmpd.conf.erb'),
     }
 }
